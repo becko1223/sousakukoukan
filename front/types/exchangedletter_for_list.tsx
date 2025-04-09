@@ -1,4 +1,4 @@
-export type Excangedletter_for_list={
+export type Exchangedletter_for_list={
     id:number;
     description:string;
     partner_name:string;
