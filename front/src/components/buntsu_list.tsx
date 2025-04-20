@@ -10,6 +10,7 @@ export default function Buntsulist(){
     async function getdata(){
         const res=await axios.get<Buntsu_for_list[]>('http://localhost:3000/buntsuletters/list/1')
         setData(res.data);
+        console.log(res.data);
     }
 
     useEffect(()=>{

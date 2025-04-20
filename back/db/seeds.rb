@@ -197,7 +197,7 @@ buntsu1=Buntsuletter.create(
     author_id:2,
     partner_id:1,
     text:'今日はシャーペンでドレミーと茨木華扇を描きました。この華扇みたいな斜めがお難しい、、、。',
-    islatest:true 
+    islatest:false
 )
 buntsu1.media.attach(io: File.open(Rails.root.join('app/assets/images/無題30_20250313200501.png')),
 filename: '無題30_20250313200501.png')
@@ -214,3 +214,14 @@ buntsu2=Buntsuletter.create!(
 )
 buntsu2.media.attach(io: File.open(Rails.root.join('app/assets/images/無題28_20250203115906.png')),
 filename: '無題28_20250203115906.png')
+
+
+buntsu3=Buntsuletter.create!(
+    author_id:2,
+    partner_id:1,
+    text:'素晴らしい～。タッチが力強い！私はデジタルで諏訪子描きました！',
+    previousletter_id:2,
+    islatest:true
+)
+buntsu3.media.attach(io: File.open(Rails.root.join('app/assets/images/referenceimagefromWebRef (2).jpeg')),
+filename: 'referenceimagefromWebRef (2).jpeg')

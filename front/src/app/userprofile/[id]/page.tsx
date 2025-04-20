@@ -3,7 +3,7 @@
 import Userprofile from "@/components/userprofile";
 import { useRouter } from "next/navigation";
 import { use, useContext } from "react";
-import { FooterContext } from "../layout";
+import { FooterContext } from "../../layout";
 
 
 export default function profilepage({params}:{ params: Promise<{ id: string }>}){

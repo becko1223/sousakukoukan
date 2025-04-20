@@ -43,7 +43,8 @@ export default function Showbuntsu(props:{id:number}){
 
 
     const deleteform=()=>{
-    
+        sendformRef.current.reset();
+        setIsformvisible(!Isformvisible);
         }
     
     const sendform=async(e: React.FormEvent<HTMLFormElement>)=>{
@@ -136,7 +137,7 @@ export default function Showbuntsu(props:{id:number}){
                 else if(/^video\/.+$/.test(blob.type)){
                     return(
                         <>
-                        <video src={objUrl} className="flex-none w-4/5 h-auto"></video>
+                        <video controls src={objUrl} className="flex-none w-4/5 h-auto"></video>
                         </>
                     )
                 }
@@ -153,7 +154,7 @@ export default function Showbuntsu(props:{id:number}){
         </div>
         {(Buntsu?.next_id!=undefined) && <Link href={"/buntsu/"+Buntsu?.next_id} className="font-bold fixed top-16 right-2  overflow-hidden rounded-md bg-neutral-700 px-5 py-2.5 text-white transition-all duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:-translate-y-1 active:scale-x-90 active:scale-y-110">次の手紙</Link>}
         {(Buntsu?.previous_id!=undefined) && <Link href={"/buntsu/"+Buntsu?.previous_id} className="font-bold fixed top-16 left-2  overflow-hidden rounded-md bg-neutral-700 px-5 py-2.5 text-white transition-all duration-300 [transition-timing-function:cubic-bezier(0.175,0.885,0.32,1.275)] active:-translate-y-1 active:scale-x-90 active:scale-y-110">前の手紙</Link>}
-        <button onClick={()=>{onPostButtonClick(); }} className={(Isreplyvisible ? "block " : "hidden ")+"fixed bottom-20 right-4"}>返事</button>
+        <button onClick={()=>{onPostButtonClick(); }} className={(Isreplyvisible ? "block " : "hidden ")+"fixed bottom-24 right-5 bg-black text-white text-xl p-2 rounded"}>返事</button>
 
 
         <form  ref={sendformRef} onSubmit={sendform}>
@@ -162,11 +163,11 @@ export default function Showbuntsu(props:{id:number}){
         <input type="hidden" name="previousletter_id" defaultValue={Buntsu?.id}></input>
         <input  ref={inputRef} name="media[]" hidden type="file" multiple accept='image/*, video/*' onChange={(e)=>{onFileInputChange(e); Formvisiblechange();}}></input>
         <div className={(Isformvisible ? "block " : "hidden ")+'fixed w-full h-full bg-white top-0 px-5'}>
-                <button className='fixed top-10 left-10' onClick={deleteform}>
+                <button type="button" className='fixed top-5 left-3 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' onClick={deleteform}>
                     削除
                 </button>
 
-                <button type="submit" className='fixed top-10 right-10'>
+                <button type="submit" className='fixed top-5 right-3 text-white bg-blue-500  focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800'>
                     送信
                 </button>
 
@@ -177,7 +178,7 @@ export default function Showbuntsu(props:{id:number}){
                             <>
                             <li className='flex-none w-4/5 h-auto'>
                             {/^image\/.+$/.test(fileObject.type) && <img src={fileObject.url}></img>}
-                            {/^video\/.+$/.test(fileObject.type) && <video src={fileObject.url}></video>}
+                            {/^video\/.+$/.test(fileObject.type) && <video controls src={fileObject.url}></video>}
                             </li>
                             </>
                         ))

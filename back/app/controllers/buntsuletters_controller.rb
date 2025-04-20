@@ -1,6 +1,11 @@
 class BuntsulettersController < ApplicationController
   def create
-    buntsuletter= Buntsuletter.new(buntsu_params)
+    buntsuletter= Buntsuletter.new(
+      author_id:params[:author_id],
+      partner_id:params[:partner_id],
+      previousletter_id:params[:previousletter_id],
+      media:params[:media]
+    )
     buntsuletter.save
     buntsuletter.previousletter.previousletter&.update(islatest:false)
     logger.debug(url_for(buntsuletter.media[0]))
@@ -32,7 +37,9 @@ class BuntsulettersController < ApplicationController
     value=[]
     letters.each do |letter|
       id=letter.id
-      id=letter.nextletter&.id
+      if(letter.nextletter)
+        id=letter.nextletter.id
+      end
       logger.debug(id)
       object={
         id:id,
