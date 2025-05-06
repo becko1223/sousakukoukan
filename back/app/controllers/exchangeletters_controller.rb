@@ -9,14 +9,39 @@ class ExchangelettersController < ApplicationController
     newletter.save
 
     params[:expected_genre].each do |genre|
-      logger.debug "#{genre}"
-      logger.debug "#{newletter.id}"
       Genreexpectation.create(genre_id:Genre.find_by(name:genre).id, exchangeletter_id:newletter.id)
     end
+    
+    newletter.user.update(status:1)
+    #User.find(newletter.user_id).update(status:1)
 
-    User.find(newletter.user_id).update(status:1)
 
-    if(exchangeletter= Exchangeletter.includes(:genre,:genres).where.not(id:newletter.id).find_by(isexchanged: false, genre: {name: newletter.genres.select(:name)}, genres: {name: newletter.genre.name}))
+   if(newletter.genres.include?(Genre.find_by(name:"all"))) then
+      if(exchangeletter= Exchangeletter.includes(:genres).where.not(id:newletter.id).find_by(isexchanged: false, genres: {name: [newletter.genre.name, "all"]}))
+        newletter.isexchanged=true
+        exchangeletter.update(isexchanged:true)
+
+        Exchangematch.create(
+          [
+            {
+              letter1_id:newletter.id,
+          letter2_id:exchangeletter.id
+          },
+          {
+            letter1_id:exchangeletter.id,
+            letter2_id:newletter.id
+          }
+          ]
+          
+        )
+        newletter.user.update(status:2)
+        exchangeletter.user.update(status:2)
+        #User.find(newletter.user_id).update(status:2)
+        #User.find(exchangeletter.user_id).update(status:2)
+      end
+    
+
+   elsif(exchangeletter= Exchangeletter.includes(:genre,:genres).where.not(id:newletter.id).find_by(isexchanged: false, genre: {name: newletter.genres.select(:name)}, genres: {name: [newletter.genre.name, "all"]}))
       #exchanegletter.update(exchangeletter_id:newletter.id,isexchanged:true)
       newletter.isexchanged=true
       exchangeletter.update(isexchanged:true)
@@ -35,9 +60,11 @@ class ExchangelettersController < ApplicationController
         
       )
 
-      User.find(newletter.user_id).update(status:2)
-      User.find(exchangeletter.user_id).update(status:2)
-    end
+      newletter.user.update(status:2)
+      exchangeletter.user.update(status:2)
+      #User.find(newletter.user_id).update(status:2)
+      #User.find(exchangeletter.user_id).update(status:2)
+   end
     newletter.save 
 
   end

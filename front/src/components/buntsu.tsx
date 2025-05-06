@@ -83,32 +83,11 @@ export default function Showbuntsu(props:{id:number}){
     }
 
 
-    async function Mediablobs(){
-        let bloblist: Blob[]=[];
-        
-        Buntsu?.media.map(async url=>{
-            console.log("loop");
-            const response = await fetch(url);
-            const blob = await response.blob();
-            bloblist.push(blob)
-        })
-        setBlobs(bloblist);
-        console.log(bloblist);
-    }
-
     useEffect(()=>{
         Getbuntsu();
     },[])
 
-    useEffect(()=>{
-        Mediablobs();
-    },[Buntsu])
-
-    useEffect(()=>{
-        console.log(Blobs);
-        
-        router.refresh();
-    },[Blobs])
+   
 
     return(
         <>
@@ -119,33 +98,17 @@ export default function Showbuntsu(props:{id:number}){
                 <div>{Buntsu?.author_name}</div>
             </div></Link><br/>
             <div className="flex overflow-x-auto">
-            {Blobs.map(blob=>(
+            {Buntsu?.media.map(url=>(
             
-            <div className='flex-none w-4/5 h-auto' key={String(blob.size)+blob.type}>
-            {
-                (()=>{
-                const objUrl = window.URL.createObjectURL(blob);
-                console.log(objUrl);
-                if(/^image\/.+$/.test(blob.type)){
-                    return(
-                        <>
-                        <img src={objUrl} className="flex-none w-4/5 h-auto"></img>
-                        </>
-                    )
-                }
+            <div className='flex-none w-4/5 h-auto' >
             
-                else if(/^video\/.+$/.test(blob.type)){
-                    return(
-                        <>
-                        <video controls src={objUrl} className="flex-none w-4/5 h-auto"></video>
-                        </>
-                    )
-                }
-            })()
-            }
-            </div>
+                
+                  <img src={url} onError={(e)=>{(e.target as HTMLImageElement).style.display="none"; const video=document.createElement("video"); video.src=url; video.controls=true; (e.target as HTMLImageElement).parentElement?.appendChild(video)}}></img>
     
-    ))}
+            </div>
+            ))}
+    
+    
             </div>
             <br/>
             <div>
@@ -161,7 +124,7 @@ export default function Showbuntsu(props:{id:number}){
         <input type="hidden" name="author_id" defaultValue={1}></input>
         <input type="hidden" name="partner_id" defaultValue={Buntsu?.author_id}></input>
         <input type="hidden" name="previousletter_id" defaultValue={Buntsu?.id}></input>
-        <input  ref={inputRef} name="media[]" hidden type="file" multiple accept='image/*, video/*' onChange={(e)=>{onFileInputChange(e); Formvisiblechange();}}></input>
+        <input  ref={inputRef} name="media" hidden type="file" multiple accept='image/*, video/*' onChange={(e)=>{onFileInputChange(e); Formvisiblechange();}}></input>
         <div className={(Isformvisible ? "block " : "hidden ")+'fixed w-full h-full bg-white top-0 px-5'}>
                 <button type="button" className='fixed top-5 left-3 text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700' onClick={deleteform}>
                     削除

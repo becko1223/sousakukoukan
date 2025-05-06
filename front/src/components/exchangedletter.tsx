@@ -1,33 +1,13 @@
 'use client'
 
-import { use, useEffect, useState } from "react";
+import { createElement, use, useEffect, useState } from "react";
 import { Exchangedletter } from "../../types/exchangedlettertypes";
 import axios from "axios";
 import  { useRouter } from "next/navigation";
 import { Router } from "next/router";
 import Link from "next/link";
 
-async function Mediaoutput(url:string){
-    const response = await fetch(url);
-    const blob = await response.blob();
-    const objUrl = window.URL.createObjectURL(blob);
-    
-    /*if(/^image\/.+$/.test(blob.type)){
-        return(
-            <>
-            <img src={objUrl} className="flex-none w-4/5 h-auto"></img>
-            </>
-        )
-    }
 
-    else if(/^video\/.+$/.test(blob.type)){
-        return(
-            <>
-            <video src={objUrl} className="flex-none w-4/5 h-auto"></video>
-            </>
-        )
-    } */
-}
 
 
 
@@ -52,17 +32,7 @@ export default function ShowExchangedletter(props:{id:number}){
     }
 
 
-    async function Mediablobs(){
-        let bloblist: Blob[]=[];
-        Data?.media.map(async url=>{
-            console.log("loop");
-            const response = await fetch(url);
-            const blob = await response.blob();
-            bloblist.push(blob)
-        })
-        setBlobs(bloblist);
-        console.log(bloblist);
-    }
+  
 
 
 
@@ -73,16 +43,7 @@ export default function ShowExchangedletter(props:{id:number}){
     },[])
 
 
-    useEffect(()=>{
-        
-        Mediablobs();
-    },[Data])
-
-    useEffect(()=>{
-        console.log(Blobs);
-        setDummy("setted");
-        router.refresh();
-    },[Blobs])
+    
 
     return(
         <>
@@ -93,33 +54,21 @@ export default function ShowExchangedletter(props:{id:number}){
         </div><span className="block h-2"></span>
         </Link>
         <ul className="flex overflow-x-auto">
-            {Blobs.map(blob=>(
             
-                    <li className='flex-none w-4/5 h-auto' key={String(blob.size)+blob.type}>
-                    {
-                        (()=>{
-                        const objUrl = window.URL.createObjectURL(blob);
-                        console.log(objUrl);
-                        if(/^image\/.+$/.test(blob.type)){
-                            return(
-                                <>
-                                <img src={objUrl} className="flex-none w-4/5 h-auto"></img>
-                                </>
-                            )
-                        }
-                    
-                        else if(/^video\/.+$/.test(blob.type)){
-                            return(
-                                <>
-                                <video src={objUrl} className="flex-none w-4/5 h-auto"></video>
-                                </>
-                            )
-                        }
-                    })()
-                    }
-                    </li>
+            {
             
-            ))}
+                    Data?.media.map(url=>(
+                        <li className='flex-none w-4/5 h-auto'>
+                            <img src={url} onError={(e)=>{(e.target as HTMLImageElement).style.display="none"; const video=document.createElement("video"); video.src=url; video.controls=true; (e.target as HTMLImageElement).parentElement?.appendChild(video)}}></img>
+                            
+                        </li>
+                    ))
+            
+            
+            
+            
+            
+            }
         </ul>
         <span className="block h-2"></span>
         

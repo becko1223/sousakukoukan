@@ -3,9 +3,11 @@ class BuntsulettersController < ApplicationController
     buntsuletter= Buntsuletter.new(
       author_id:params[:author_id],
       partner_id:params[:partner_id],
+      text:params[:text],
       previousletter_id:params[:previousletter_id],
       media:params[:media]
     )
+
     buntsuletter.save
     buntsuletter.previousletter.previousletter&.update(islatest:false)
     logger.debug(url_for(buntsuletter.media[0]))

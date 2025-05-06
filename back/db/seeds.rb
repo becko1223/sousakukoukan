@@ -36,6 +36,7 @@ filename: 'DEFAULTIMG_739438dc72a2-e5b1-460b-b5f8-f5a337c56875.png')
 
 Genre.create!(
     [
+        
         {name:'digitalillust'},
         {name:'analogillust'},
         {name:'CG'},
@@ -45,7 +46,8 @@ Genre.create!(
         {name:'literature'},
         {name:'3D'},
         {name:'cook'},
-        {name:'others'}
+        {name:'others'},
+        {name:'all'}
     ]
 )
 
