@@ -30,8 +30,8 @@ export default function Freekoukankontet_kiroku(){
                 Letterlist.map(item=>(
                     
                     
-                    <li className="mb-4">
-                    <Link href={'/exchangedletter/'+String(item.id)} key={item.id} >
+                    <li className="mb-4" key={item.id}>
+                    <Link href={'/exchangedletter/'+String(item.id)}  >
                     <div className="flex h-20 mx-3">
                         <img src={item.partner_avatar} className="w-20 h-20 object-cover object-top rounded-full"></img>
                         <div className="flex flex-col ml-4">

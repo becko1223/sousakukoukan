@@ -40,14 +40,11 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 w-auto`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 w-auto`}>
         
         <FooterContext.Provider value={{ FooterIndex, setFooterIndex }}>
         {children}
-        </FooterContext.Provider>
-        <FooterContext.Provider value={{ FooterIndex, setFooterIndex }}>
+        
         <Footer />
         </FooterContext.Provider>
         

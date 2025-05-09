@@ -1,8 +1,6 @@
 'use client'
 import ShowExchangedletter from "@/components/exchangedletter";
 import { use, useEffect, useState } from "react";
-import { Exchangedletter } from "../../../../types/exchangedlettertypes";
-import { getFlightDataPartsFromPath } from "next/dist/client/flight-data-helpers";
 import axios from "axios";
 import Showreply from "@/components/reply";
 import { useRouter } from "next/navigation";
@@ -33,33 +31,36 @@ export default function exchangeletterpage({params}:{ params: Promise<{ id: stri
             <>
             <div className="mx-3">
 
-            <div className=" mt-3 mb-10">
-            <button className="mb-2" onClick={()=>{router.back()}}><img className="w-10" src="https://icongr.am/feather/arrow-left.svg?size=128&color=currentColor"></img></button>
-            <div className="bg-stone-100 shadow-md p-4">
-            <div className="text-2xl text-slate-600 font-bold mb-1">もらった手紙</div>
-            <ShowExchangedletter id={Number(useparams.id)} />
-            </div>
-            <span className="block h-16"></span>
-            <div className="bg-stone-100 shadow-md p-4">
-            <div className="text-2xl text-slate-600 font-bold mb-1">送った返事</div>
-            <Showreply id={Number(useparams.id)}/>
-            </div>
-            <span className="block h-20"></span>
-            <div className="w-screen border-t-2"></div>
-            <span className="block h-20"></span>
+                <div className=" mt-3 mb-10">
+                    <button className="mb-2" onClick={()=>{router.back()}}><img className="w-10" src="https://icongr.am/feather/arrow-left.svg?size=128&color=currentColor"></img></button>
+                    <div className="bg-stone-100 shadow-md p-4">
+                        <div className="text-2xl text-slate-600 font-bold mb-1">もらった手紙</div>
+                        <ShowExchangedletter id={Number(useparams.id)} />
+                    </div>
+                    <span className="block h-16"></span>
+                    <div className="bg-stone-100 shadow-md p-4">
+                        <div className="text-2xl text-slate-600 font-bold mb-1">送った返事</div>
+                        <Showreply id={Number(useparams.id)}/>
+                    </div>
+                    <span className="block h-20"></span>
 
-            <div className="bg-stone-100 shadow-md p-4">
-            <div className="text-2xl text-slate-600 font-bold mb-1">あげた手紙</div>
-            {(Matchid!=undefined) && <ShowExchangedletter id={Number(Matchid)}/>}
-            </div>
-            <span className="block h-16"></span>
+                    <div className="w-screen border-t-2"></div>
 
-            <div className="bg-stone-100 shadow-md p-4">
-            <div className="text-2xl text-slate-600 font-bold mb-1">もらった返事</div>
-            {(Matchid!=undefined) && <Showreply id={Number(Matchid)}/>}
-            </div>
-            <span className="block h-24"></span>
-            </div>
+                    <span className="block h-20"></span>
+
+                    <div className="bg-stone-100 shadow-md p-4">
+                        <div className="text-2xl text-slate-600 font-bold mb-1">あげた手紙</div>
+                        {(Matchid!=undefined) && <ShowExchangedletter id={Number(Matchid)}/>}
+                    </div>
+
+                    <span className="block h-16"></span>
+
+                    <div className="bg-stone-100 shadow-md p-4">
+                        <div className="text-2xl text-slate-600 font-bold mb-1">もらった返事</div>
+                        {(Matchid!=undefined) && <Showreply id={Number(Matchid)}/>}
+                    </div>
+                    <span className="block h-24"></span>
+                </div>
 
             </div>
             </>

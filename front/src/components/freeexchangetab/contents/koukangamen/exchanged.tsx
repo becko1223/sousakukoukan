@@ -52,9 +52,9 @@ export default function Exchanged(props:{letter_id:number}){
         <div className={(islettervisible ? "block " : "hidden ")+'fixed w-full px-3 pb-64  h-screen top-16 left-0 bg-gray-50 overflow-y-auto'}>
             <div className='h-12'></div>
             <div className="bg-stone-100 shadow-lg p-4">
-            <ShowExchangedletter  id={props.letter_id}/>
+                <ShowExchangedletter  id={props.letter_id}/>
             </div>
-            <button className='fixed bottom-20 right-5 bg-black text-white text-xl p-2 rounded' onClick={isformvisiblechange}>返事</button>
+            <button className='fixed bottom-24 right-5 bg-black text-white text-xl p-2 rounded' onClick={isformvisiblechange}>返事</button>
             <button className='fixed top-20 left-5' onClick={islettervisiblechange}><img className="w-10 bg-white bg-opacity-65 rounded-full" src="https://icongr.am/feather/arrow-left.svg?size=128&color=currentColor"></img></button>
             
             {/* フォーム表示 */}

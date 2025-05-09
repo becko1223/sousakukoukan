@@ -1,7 +1,6 @@
 class FriendappliesController < ApplicationController
   def create
     Friendapply.create(applyer_id:params[:applyer_id],applied_id:params[:applied_id])
-    logger.debug("create?")
     render json:{}
   end
 

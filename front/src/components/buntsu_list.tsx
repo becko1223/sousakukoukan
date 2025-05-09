@@ -25,7 +25,7 @@ export default function Buntsulist(){
         <ul>
             {
                 Data.map((letter)=>(
-                    <>
+                    
                     <li key={letter.id}>
                         <Link className="mb-4" href={"/buntsu/"+String(letter.id)}>
                             <div className="flex h-20 w-full">
@@ -35,7 +35,7 @@ export default function Buntsulist(){
                         </Link>
 
                     </li>
-                    </>
+                    
                 ))
             }
         </ul>

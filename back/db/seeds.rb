@@ -77,7 +77,7 @@ exchange2=Exchangeletter.create!(
         
             
                 user_id:1,
-                description:'ホロライブenのがうる・ぐらちゃんを描きました。Vtuberの中でもがうる・ぐらちゃんが一番好きです、本当に可愛い。この絵はバレンタインのときに描いたやつですー。',
+                description:'ホロライブenのがうる・ぐらちゃんを描きました。Vtuberの中でもがうる・ぐらちゃんが一番好きです、本当に可愛い。この絵はバレンタインのときに描いたやつなんですー。',
                 genre_id:1,
                 isexchanged:true
            
@@ -107,7 +107,7 @@ filename: 'DEFAULTunicodefbb8161d-f896-44ff-bd7c-0a0eb5781a18.png')
 
 exchange5=Exchangeletter.create!(
     user_id:4,
-    description:'東方Projectのソシャゲの東方幻想エクリプスで出てきたバレンタインこいしちゃんを描きました。淡い色合いが美しくて好きです。',
+    description:'東方Projectのソシャゲの東方幻想エクリプスで出てきたバレンタインこいしちゃんを描きました。淡い色合いが美しくて好きです。エクリプスのキャラデザは最高だと思います！',
     genre_id:1,
 )
 
@@ -210,9 +210,9 @@ filename: '無題36_20250322201203.png')
 buntsu2=Buntsuletter.create!(
     author_id:1,
     partner_id:2,
-    text:'わ～とても素敵ですねー。鉛筆画って好きです。その角度の顔難しいのに上手に描けていてすごいです。私は今日は水彩で東方異形郷の異形魔理沙を描きました。透明水彩は全然素人ですが、触っていて楽しいです。',
+    text:'わ～とても素敵ですねー。鉛筆の絵って好きです。その角度の顔難しいのに上手に描けていてすごいです。私は今日は水彩で東方異形郷の異形魔理沙を描きました。透明水彩は全然素人ですが、触っていて楽しいです。',
     previousletter_id:1,
-    islatest:true
+    islatest:false
 )
 buntsu2.media.attach(io: File.open(Rails.root.join('app/assets/images/無題28_20250203115906.png')),
 filename: '無題28_20250203115906.png')
@@ -221,7 +221,7 @@ filename: '無題28_20250203115906.png')
 buntsu3=Buntsuletter.create!(
     author_id:2,
     partner_id:1,
-    text:'素晴らしい～。タッチが力強い！私はデジタルで諏訪子描きました！',
+    text:'素晴らしい～。タッチが力強い！最近私はデジタルで諏訪子描きました！',
     previousletter_id:2,
     islatest:true
 )

@@ -15,7 +15,7 @@ export default function Freekoukancontent_koukan(){
             setStatus(res.data.status);
             setLetter_id(res.data.letter_id)
             console.log("status catched");
-            console.log(res.data);
+            
         }catch(err){
             console.log(err);
         }
@@ -57,7 +57,7 @@ export default function Freekoukancontent_koukan(){
         }
 
 
-        console.log(Status);
+     
 
     }
 

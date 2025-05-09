@@ -1,5 +1,6 @@
 class BuntsulettersController < ApplicationController
   def create
+
     buntsuletter= Buntsuletter.new(
       author_id:params[:author_id],
       partner_id:params[:partner_id],
@@ -9,13 +10,12 @@ class BuntsulettersController < ApplicationController
     )
 
     buntsuletter.save
-    buntsuletter.previousletter.previousletter&.update(islatest:false)
-    logger.debug(url_for(buntsuletter.media[0]))
+    buntsuletter.previousletter&.update(islatest:false)
     render json:{id:buntsuletter.id}
   end
 
   def show
-    buntsuletter= Buntsuletter.find(params[:id])
+    buntsuletter=Buntsuletter.find(params[:id])
     user= buntsuletter.author
     media=[]
     buntsuletter.media.each do |m|
@@ -35,19 +35,24 @@ class BuntsulettersController < ApplicationController
   end
 
   def list
-    letters= Buntsuletter.where(partner_id:params[:id],islatest:true)
+    letters= Buntsuletter.where(partner_id:params[:id],islatest:true).or(Buntsuletter.where(author_id:params[:id],islatest:true))
     value=[]
     letters.each do |letter|
       id=letter.id
-      if(letter.nextletter)
-        id=letter.nextletter.id
-      end
-      logger.debug(id)
       object={
         id:id,
         partner_name:letter.author.name,
         partner_avatar:url_for(letter.author.avatar)
       }
+    
+      if(params[:id].to_i==letter.author_id.to_i)
+        
+        object={
+        id:id,
+        partner_name:letter.partner.name,
+        partner_avatar:url_for(letter.partner.avatar)
+        }
+      end
       value.push(object)
     end
     render json:value
@@ -55,11 +60,12 @@ class BuntsulettersController < ApplicationController
 
 
   def fromprofile
-    letter=Buntsuletter.where(partner_id:params[:my_id],author_id:params[:friend_id]).last
-    if(!letter.nextletter.nil?)
-      letter=letter.nextletter
+    if(!letter=Buntsuletter.where(partner_id:params[:my_id],author_id:params[:friend_id]).or(Buntsuletter.where(partner_id:params[:friend_id],author_id:params[:my_id])).last)
+      render json:{partner_id:params[:friend_id]}
+    else
+      
+      render json:{id:letter.id}
     end
-    render json:{id:letter.id}
   end
 
 

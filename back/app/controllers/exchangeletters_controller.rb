@@ -13,7 +13,7 @@ class ExchangelettersController < ApplicationController
     end
     
     newletter.user.update(status:1)
-    #User.find(newletter.user_id).update(status:1)
+   
 
 
    if(newletter.genres.include?(Genre.find_by(name:"all"))) then
@@ -36,13 +36,12 @@ class ExchangelettersController < ApplicationController
         )
         newletter.user.update(status:2)
         exchangeletter.user.update(status:2)
-        #User.find(newletter.user_id).update(status:2)
-        #User.find(exchangeletter.user_id).update(status:2)
+      
       end
     
 
    elsif(exchangeletter= Exchangeletter.includes(:genre,:genres).where.not(id:newletter.id).find_by(isexchanged: false, genre: {name: newletter.genres.select(:name)}, genres: {name: [newletter.genre.name, "all"]}))
-      #exchanegletter.update(exchangeletter_id:newletter.id,isexchanged:true)
+  
       newletter.isexchanged=true
       exchangeletter.update(isexchanged:true)
 
@@ -62,10 +61,9 @@ class ExchangelettersController < ApplicationController
 
       newletter.user.update(status:2)
       exchangeletter.user.update(status:2)
-      #User.find(newletter.user_id).update(status:2)
-      #User.find(exchangeletter.user_id).update(status:2)
+      
    end
-    newletter.save 
+   newletter.save 
 
   end
 
@@ -78,12 +76,9 @@ class ExchangelettersController < ApplicationController
       avatar:url_for(exchangeletter.user.avatar)
     }
     media=[]
-    logger.debug("hihi")
-    logger.debug(exchangeletter.media.length)
-    logger.debug("hoihoi")
+   
     exchangeletter.media.each do |m|
       media.push(url_for(m))
-      logger.debug("hihi")
     end
 
 

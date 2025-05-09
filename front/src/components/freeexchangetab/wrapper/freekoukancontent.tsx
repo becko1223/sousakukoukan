@@ -1,5 +1,5 @@
 'use client'
-import { useContext } from 'react';
+
 import Freekoukan_tab from './freekoukan_tab';
 import Freekoukancontent_koukan from '../contents/freekoukancontent_koukan';
 import Freekoukankontet_kiroku from '../contents/freekoukancontent_kiroku';

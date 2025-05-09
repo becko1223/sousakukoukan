@@ -8,8 +8,8 @@ class RepliesController < ApplicationController
   def show
     logger.debug(params[:id])
     reply= Reply.find_by(toletter_id: params[:id])
-    #logger.debug(reply)
-    user= User.find_by(id:reply&.user_id)
+    
+    user= reply.user
     author={
       id:user&.id,
       name:user&.name,

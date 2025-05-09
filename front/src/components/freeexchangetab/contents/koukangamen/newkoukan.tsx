@@ -41,21 +41,11 @@ export default function Newkoukan(){
     const sendform= async (e: React.FormEvent<HTMLFormElement>)=>{
         e.preventDefault();
 
-        //let elements=(e.target as HTMLFormElement).elements
+    
         
 
         const submit_data=new FormData(e.target as HTMLFormElement);
-        /*
-        Array.from((elements["mediafiles"].files) as FileList).map((media)=>{
-            submit_data.append("media",media);
-        });
-        submit_data.append("user_id","1");
-        submit_data.append("description",elements["description"]);
-        submit_data.append("genre",elements["genre"]);
-        (elements["expected_genre[]"] as string[]).map((expected_genre)=>{
-            submit_data.append("genres",expected_genre)
-        }) 
-        */
+     
         try {
            
             await axios.post('http://localhost:3000/exchangeletters/create', submit_data)
@@ -116,25 +106,25 @@ export default function Newkoukan(){
                     }
                 </ul>
                 <div className='border-b-2 border-t-2 pt-2  pb-4'>
-                <textarea placeholder='説明文' name='description' className='w-full h-20 overflow-y-auto  '></textarea>
+                    <textarea placeholder='説明文' name='description' className='w-full h-20 overflow-y-auto  '></textarea>
                 </div>
                 
                 <div className='border-b-2 pb-4'>
-                <fieldset className='h-40 overflow-y-auto '>
-                <legend className='mb-4 font-bold text-zinc-500'>作品ジャンル</legend>
-                <div className='flex flex-col gap-2 '>
-                <label><input type='radio' name='genre' value="digitalillust" required/>デジタルイラスト</label>
-                <label><input type='radio' name='genre' value="analogillust"/>アナログイラスト</label>
-                <label><input type='radio' name='genre' value="CG"/>CG</label>
-                <label><input type='radio' name='genre' value="movie"/>映像</label>
-                <label><input type='radio' name='genre' value="photo"/>写真</label>
-                <label><input type='radio' name='genre' value="music"/>音楽</label>
-                <label><input type='radio' name='genre' value="literature"/>字</label>
-                <label><input type='radio' name='genre' value="3D"/>立体物</label>
-                <label><input type='radio' name='genre' value="cook"/>料理</label>
-                <label><input type='radio' name='genre' value="others"/>その他</label>
-                </div>
-                </fieldset>
+                    <fieldset className='h-40 overflow-y-auto '>
+                        <legend className='mb-4 font-bold text-zinc-500'>作品ジャンル</legend>
+                        <div className='flex flex-col gap-2 '>
+                            <label><input type='radio' name='genre' value="digitalillust" required/>デジタルイラスト</label>
+                            <label><input type='radio' name='genre' value="analogillust"/>アナログイラスト</label>
+                            <label><input type='radio' name='genre' value="CG"/>CG</label>
+                            <label><input type='radio' name='genre' value="movie"/>映像</label>
+                            <label><input type='radio' name='genre' value="photo"/>写真</label>
+                            <label><input type='radio' name='genre' value="music"/>音楽</label>
+                            <label><input type='radio' name='genre' value="literature"/>字</label>
+                            <label><input type='radio' name='genre' value="3D"/>立体物</label>
+                            <label><input type='radio' name='genre' value="cook"/>料理</label>
+                            <label><input type='radio' name='genre' value="others"/>その他</label>
+                        </div>
+                    </fieldset>
                 </div>
 
                 <fieldset className='h-40 overflow-y-auto'>

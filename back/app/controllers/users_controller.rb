@@ -15,7 +15,6 @@ class UsersController < ApplicationController
   def status
     status=User.find(params[:id]).status
     letter_id=User.find(params[:id]).exchangeletters.last.exchangedletter&.id
-    logger.debug letter_id
     value={status:status,letter_id:letter_id}
     render json:value
   end

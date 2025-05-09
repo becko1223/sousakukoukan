@@ -42,8 +42,8 @@ export default function Apply_list(){
                 <>
                 <div className="flex h-20 mb-4" key={friend.id}>
                     <Link className="flex" href={"/userprofile/"+String(friend.id)}>
-                    <img className="w-20 object-cover rounded-full object-top" src={friend.avatar}></img>
-                    <div className="font-bold text-xl text-gray-600 mt-2 ml-4">{friend.name}</div>
+                        <img className="w-20 object-cover rounded-full object-top" src={friend.avatar}></img>
+                        <div className="font-bold text-xl text-gray-600 mt-2 ml-4">{friend.name}</div>
                     </Link>
                     <button className="ml-32 bg-gray-900 rounded text-white h-10 px-2 mt-4" onClick={()=>{approve(friend.id)}}>承認</button>
                     <button className="ml-5 border border-red-500 rounded text-red-500 h-10 px-2 mt-4" onClick={()=>{reject(friend.id)}}>拒否</button>

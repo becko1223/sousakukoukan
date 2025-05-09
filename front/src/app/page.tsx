@@ -1,6 +1,5 @@
 'use client'
 import Freekoukancontent from "@/components/freeexchangetab/wrapper/freekoukancontent";
-import Image from "next/image";
 import { useContext, useEffect } from "react";
 import { FooterContext } from "./layout";
 

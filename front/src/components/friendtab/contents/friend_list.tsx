@@ -27,10 +27,10 @@ export default function Friend_list(){
             {Friendlist.map(friend=>(
                 <>
                 <Link  href={"/userprofile/"+String(friend.id)}>
-                <div className="flex h-20 mb-4" >
-                    <img className="w-20 object-cover rounded-full object-top" src={friend.avatar}></img>
-                    <div className="font-bold text-xl text-gray-600 mt-2 ml-4">{friend.name}</div>
-                </div>
+                    <div className="flex h-20 mb-4" >
+                        <img className="w-20 object-cover rounded-full object-top" src={friend.avatar}></img>
+                        <div className="font-bold text-xl text-gray-600 mt-2 ml-4">{friend.name}</div>
+                    </div>
                 </Link>
                 </>
             ))}

@@ -11,6 +11,7 @@ export default function friend(){
     useEffect(()=>{
         setFooterIndex(2);
     },[])
+    
     return(
         <>
         <Freiend_content/>
