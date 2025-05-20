@@ -113,7 +113,7 @@
 
 # ER図
 
-<img src="https://github.com/user-attachments/assets/924572a0-9022-4afa-96d4-94c90388ea65" width="600">
+<img src="https://github.com/user-attachments/assets/1018aa5c-d3d2-4bf0-b7a7-dd661fd6becc" width="600">
 
 
 
