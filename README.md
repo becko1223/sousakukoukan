@@ -64,19 +64,13 @@
 
 <table style="table-layout: fixed; width: 600;">
   <tr>
-    <th>交換手紙一覧画面</th>
-    <th>交換手紙閲覧画面</th>
-    <th>交換手紙閲覧画面（続き）</th>
-    <th>交換手紙閲覧画面（続き）</th>
+    <th>文通相手一覧画面</th>
+    <th>文通表示画面１</th>
+    <th>文通表示画面２</th>
+    <th>文通表示画面３</th>
   </tr>
 
   <tr>
-   ![スクリーンショット 2025-05-06 165423](https://github.com/user-attachments/assets/d2d530bc-5f7f-4807-9568-823a62634d07)
-![スクリーンショット 2025-05-06 165310](https://github.com/user-attachments/assets/18a87247-2d78-430b-9cce-a319732f68fb)
-![スクリーンショット 2025-05-06 163738](https://github.com/user-attachments/assets/835a3a00-0239-4f0e-81fb-0b5bc613635a)
-![スクリーンショット 2025-05-06 162056](https://github.com/user-attachments/assets/c9c69e67-cefb-48d6-8c48-baf911cafdf8)
-
-
     <td width="230"><img src="https://github.com/user-attachments/assets/c9c69e67-cefb-48d6-8c48-baf911cafdf8" width="200"></td>
     <td width="230"><img src="https://github.com/user-attachments/assets/835a3a00-0239-4f0e-81fb-0b5bc613635a" width="200"></td>
     <td width="230"><img src="https://github.com/user-attachments/assets/18a87247-2d78-430b-9cce-a319732f68fb" width="200"></td>
@@ -84,9 +78,9 @@
   </tr>
 
   <tr>
-    <td>ボタンを押すと手紙送信のためのフォームが現れます。</td>
-    <td>手紙のジャンルや希望のジャンルをもとに条件を満たす手紙とマッチングします。</td>
-    <td>ボタンを押すと交換された手紙を閲覧できます。</td>
-    <td>返事を送ることができます。</td>
+    <td>文通中の相手一覧が表示されます。</td>
+    <td>まずは一番最新の手紙が表示されます。一番最新の相手からの手紙なので返事を出すためのボタンが現れています。</td>
+    <td>ひとつ前の手紙です。前後の手紙に移るためのボタンが表示されています。</td>
+    <td>さらにひとつ前の手紙です。最初の手紙なので、次の手紙に移るボタンしか表示されていません。</td>
   </tr>
 </table>
